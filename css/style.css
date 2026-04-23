@@ -785,6 +785,61 @@ img {
     background: var(--secondary-color);
     color: white;
 }
+/* Team Contact Styles */
+.team-contact {
+    margin: 12px 0;
+    padding: 10px;
+    background: rgba(184, 134, 11, 0.05);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.team-contact:hover {
+    background: rgba(184, 134, 11, 0.1);
+}
+
+.team-contact a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.team-contact a:hover {
+    color: var(--secondary-color);
+}
+
+.team-contact i {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+/* Enhanced Team Card */
+.team-card {
+    background: white;
+    padding: 40px 24px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.team-card .team-social {
+    margin-top: auto;
+    padding-top: 16px;
+}
 
 /* Mission Section */
 .mission-grid {
@@ -1170,5 +1225,180 @@ img {
     
     .team-grid {
         grid-template-columns: 1fr;
+    }
+}
+/* ============================================
+   FLOATING SOCIAL ICONS
+   ============================================ */
+
+.floating-social {
+    position: fixed;
+    bottom: 30px;
+    z-index: 998;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* WhatsApp - Left Side */
+.floating-whatsapp {
+    position: fixed;
+    left: 30px;
+    bottom: 30px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    z-index: 998;
+    animation: pulse-whatsapp 2s infinite;
+}
+
+.floating-whatsapp:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+    background: #20bd5a;
+}
+
+/* YouTube - Right Side */
+.floating-youtube {
+    position: fixed;
+    right: 30px;
+    bottom: 100px;
+    width: 60px;
+    height: 60px;
+    background: #FF0000;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    z-index: 998;
+    animation: pulse-youtube 2s infinite 0.5s;
+}
+
+.floating-youtube:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 12px 35px rgba(255, 0, 0, 0.6);
+    background: #e50000;
+}
+
+/* Tooltips */
+.tooltip {
+    position: absolute;
+    background: #1e293b;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+
+/* WhatsApp Tooltip (appears on right of icon) */
+.floating-whatsapp .tooltip {
+    left: 75px;
+    bottom: 50%;
+    transform: translateY(50%);
+}
+
+.floating-whatsapp:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    left: 70px;
+}
+
+/* YouTube Tooltip (appears on left of icon) */
+.floating-youtube .tooltip {
+    right: 75px;
+    bottom: 50%;
+    transform: translateY(50%);
+}
+
+.floating-youtube:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    right: 70px;
+}
+
+/* Pulse Animations */
+@keyframes pulse-whatsapp {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+@keyframes pulse-youtube {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(255, 0, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .floating-whatsapp {
+        left: 20px;
+        bottom: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.6rem;
+    }
+    
+    .floating-youtube {
+        right: 20px;
+        bottom: 80px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .tooltip {
+        display: none; /* Hide tooltips on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .floating-whatsapp {
+        left: 15px;
+        bottom: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.4rem;
+    }
+    
+    .floating-youtube {
+        right: 15px;
+        bottom: 70px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
     }
 }
